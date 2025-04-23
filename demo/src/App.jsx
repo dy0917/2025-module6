@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Hero from "./components/Hero";
@@ -13,14 +13,22 @@ import Child from "./components/ChildComponent";
 import BirthdayTranslator from "./components/BirthdayTranslator";
 import Weather from "./components/Weather";
 import LoginForm from "./components/LoginForm";
+import ActivityFinder from "./components/ActivityFinder";
+import VideoPlayer from "./components/VideoPlayer";
+import ReducerCounter from "./components/ReducerCounter";
+import PostListReducer from "./components/PostListReducer";
+import SubscribeForm from "./components/SubscribeForm";
+function Bomb() {
+  return <>Bomb</>;
+}
 
 function App() {
-  console.log("parent update");
+  const [exploded, setExploded] = useState(false);
+  const [count, setCount] = useState(0);
+
   return (
     <>
-      <MoviesList></MoviesList>
-      {/* <BirthdayTranslator></BirthdayTranslator>
-      <Weather></Weather> */}
+      <ActivityFinder />
     </>
   );
 }

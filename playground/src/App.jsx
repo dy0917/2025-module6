@@ -3,11 +3,24 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+function Bomb() {
+  throw new Error(" KABOOM ");
+}
+
 function App() {
   const [count, setCount] = useState(0);
-  
+  const [exploded, setExploded] = React.useState(false);
   return (
     <>
+      <div className="ExplodingBomb componentBox">
+        <button onClick={() => setExploded(!exploded)}>
+          DANGER: Click to explode bomb!
+        </button>
+
+        {/* Renders the Bomb conditionally, depending on state */}
+        {exploded ? <Bomb /> : null}
+      </div>
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
