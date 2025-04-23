@@ -1,7 +1,5 @@
-import { useState, useContext } from "react";
-import TodoForm from "./components/TodoForm";
-import TodoTable from "./components/TodoTable";
-import { TodoContext } from "./contexts/TodoContext";
+import { createContext, useState } from "react";
+export const TodoContext = createContext();
 
 const todoListJson = [
   {
@@ -17,10 +15,12 @@ const todoListJson = [
   },
 ];
 
-function App() {
+export const TodoProvider = (props) => {
+  // store the current user in state at the top level
   const [todoList, setTodoList] = useState(todoListJson);
-  const todoContextObj = useContext(TodoContext);
-  console.log("todoContextObj", todoContextObj);
+  //   const [todoList, dispatch] = useReducer({}, todoListJson);
+
+  const a = "string";
   const addTodoFunction = (todo) => {
     const nextId = Math.max(...todoList.map((todo) => todo.id)) + 1;
     const newTodo = { ...todo, id: nextId };
@@ -45,17 +45,16 @@ function App() {
   };
 
   return (
-    <>
-      <div className="container mt-5">
-        <TodoForm addTodoFunction={addTodoFunction}></TodoForm>
-        <TodoTable
-          todoList={todoList}
-          delTodoFunction={delTodoFunction}
-          toggleCompletedFunction={toggleCompletedFunction}
-        ></TodoTable>
-      </div>
-    </>
+    <TodoContext.Provider
+      value={{
+        todoList,
+        addTodoFunction,
+        delTodoFunction,
+        toggleCompletedFunction,
+        a,
+      }}
+    >
+      {props.children}
+    </TodoContext.Provider>
   );
-}
-
-export default App;
+};

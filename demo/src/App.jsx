@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useReducer } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Hero from "./components/Hero";
@@ -25,6 +25,27 @@ function Bomb() {
 function App() {
   const [exploded, setExploded] = useState(false);
   const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.log("run once");
+  }, []);
+
+  useEffect(() => {
+    console.log("everything update");
+  }, [count]);
+
+  useEffect(() => {
+    console.log("everything render");
+  });
+
+  useEffect(() => {
+    return () => {
+      console.log("unmount");
+    };
+  });
+
+  useState
+  useReducer
+
 
   return (
     <>

@@ -1,10 +1,6 @@
 import TodoTr from "./TodoTr";
 
-export default function TodoTable({
-  todoList,
-  delTodoFunction,
-  toggleCompletedFunction,
-}) {
+export default function TodoTable({ todoList }) {
   return (
     <>
       <table className="table">
@@ -18,14 +14,7 @@ export default function TodoTable({
         </thead>
         <tbody>
           {todoList.map((todo) => {
-            return (
-              <TodoTr
-                key={todo.id}
-                todo={todo}
-                delTodoFunction={delTodoFunction}
-                toggleCompletedFunction={toggleCompletedFunction}
-              ></TodoTr>
-            );
+            return <TodoTr key={todo.id} todo={todo}></TodoTr>;
           })}
         </tbody>
       </table>

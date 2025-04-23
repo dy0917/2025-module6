@@ -1,8 +1,9 @@
-export default function TodoTr({
-  todo,
-  delTodoFunction,
-  toggleCompletedFunction,
-}) {
+import { useContext } from "react";
+import { TodoContext } from "../contexts/TodoContext";
+
+export default function TodoTr({ todo }) {
+  const { delTodoFunction, toggleCompletedFunction, a } = useContext(TodoContext);
+  console.log('a', a)
   const delBtnClick = () => {
     delTodoFunction(todo.id);
   };

@@ -3,12 +3,14 @@ import Home from "./pages/Home";
 import DashboardPage, {
   DashboardMessages,
   DashboardTasks,
+  Posts,
 } from "./pages/DashboardPage";
 import AboutPage from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
 import NavBar from "./components/NavBar";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
-export function AppRoutes(props) {
+export function AppRoutes() {
   return (
     <>
       <NavBar></NavBar>
@@ -17,9 +19,17 @@ export function AppRoutes(props) {
         <Route index element={<Home />} />
 
         {/* nested routes, matches on /dash/messages etc */}
-        <Route path="dash" element={<DashboardPage />}>
-          <Route path="messages" element={<DashboardMessages />} />
+        <Route
+          path="dash"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="messages/:mid" element={<DashboardMessages />} />
           <Route path="tasks" element={<DashboardTasks />} />
+          <Route path="posts/:id" element={<Posts />} />
         </Route>
 
         <Route path="/about" element={<AboutPage />} />
