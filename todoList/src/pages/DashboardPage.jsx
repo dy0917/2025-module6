@@ -33,7 +33,7 @@ or null if it is "/dash" */}
 
 export function DashboardMessages() {
   // const { currentUser } = useUserContext();
-  const { mid } = useParams();
+  // const { mid } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   console.log("searchParams", searchParams.get("a"));
   console.log("searchParams", searchParams.get("b"));
@@ -65,7 +65,9 @@ export function DashboardTasks() {
 }
 
 export function Posts() {
+  const params = useParams();
   const [searchParams, setSearchParams] = useSearchParams(); // import this hook
+  console.log("params", params);
   const limit = searchParams.get("limit") ? searchParams.get("limit") : 5;
   // const postsData = useData(
   //   "https://jsonplaceholder.typicode.com/posts?_limit=" + limit

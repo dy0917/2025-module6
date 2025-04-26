@@ -8,7 +8,7 @@ import DashboardPage, {
 import AboutPage from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
 import NavBar from "./components/NavBar";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import {ProtectedRoute} from './components/ProtectedRoute'
 
 export function AppRoutes() {
   return (
